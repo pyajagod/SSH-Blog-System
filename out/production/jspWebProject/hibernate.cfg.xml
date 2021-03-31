@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- 配置关于数据库连接的四个项 driverClass url username password -->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+<!--        ?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8-->
+        <property name="hibernate.connection.url">jdbc:mysql://118.25.114.108:3306/blogs?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=GMT%2B8</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">Qwy123123.</property>
+
+
+        <!-- 设置连接提供者 -->
+        <!-- <property name="hibernate.connection.provider_class">
+                    org.hibernate.connection.C3P0ConnectionProvider
+             </property> -->
+        <!-- c3p0连接池的配置 -->
+        <!-- <property name="hibernate.c3p0.max_size">20</property> --> <!-- 最大连接池 -->
+        <!-- <property name="hibernate.c3p0.min_size">5</property> --> <!-- 最小连接数 -->
+        <!-- <property name="hibernate.c3p0.timeout">120</property> --> <!-- 超时 -->
+        <!-- <property name="hibernate.c3p0.idle_test_period">3000</property> --> <!-- 空闲连接 -->
+
+        <!-- 可以将向数据库发送的sql显示出来 -->
+        <property name="hibernate.show_sql">true</property>
+        <!-- 格式化sql -->
+<!--        <property name="hibernate.format_sql">true</property>-->
+
+        <!-- hibernate的方言 -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!-- 自动创建表 -->
+<!--        <property name="hibernate.hbm2ddl.auto">update</property>-->
+
+        <!-- 用于设置事务提交方式 -->
+<!--        <property name="hibernate.connection.autocommit">false</property>-->
+
+        <!-- 配置hibernate的映射文件所在位置 -->
+        <mapping resource="com/qwy/blogs/bean/UserBean.hbm.xml" />
+        <mapping resource="com/qwy/blogs/bean/ArticleBean.hbm.xml" />
+        <mapping resource="com/qwy/blogs/bean/FileBean.hbm.xml" />
+    </session-factory>
+
+</hibernate-configuration>

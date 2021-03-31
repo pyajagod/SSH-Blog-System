@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="8a083648-275b-4bc5-9bf5-9e95460d99c1">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate
+
+D:/part1/AllJava/struct2/jspWebProject/src/hibernate.cfg.xml</remarks>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/jsphomework</jdbc-url>
+      <driver-properties>
+        <property name="autoReconnect" value="true" />
+        <property name="yearIsDateType" value="false" />
+        <property name="characterEncoding" value="utf8" />
+        <property name="zeroDateTimeBehavior" value="convertToNull" />
+        <property name="characterSetResults" value="utf8" />
+        <property name="tinyInt1isBit" value="false" />
+      </driver-properties>
+    </data-source>
+  </component>
+</project>

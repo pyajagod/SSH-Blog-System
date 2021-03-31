@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="jspWeb">
+    <output-path>$PROJECT_DIR$/out/artifacts/jspWeb</output-path>
+    <root id="root" />
+  </artifact>
+</component>

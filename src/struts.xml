@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="true" />
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.multipart.maxSize" value="20971520" />
+    <package name="struts2" extends="struts-default,json-default" namespace="/">
+        <!-- 文件管理-->
+        <action name="uploadFileAction" class="com.qwy.blogs.action.FileAction" method="uploadFile">
+            <result name="success" type="redirectAction">manageFile?userId=${uploaderId}</result>
+        </action>
+
+        <action name="downloadFileAction" class="com.qwy.blogs.action.FileAction" method="downloadFile">
+            <result name="success">downloadFiles.jsp</result>
+        </action>
+
+        <action name="manageFile" class="com.qwy.blogs.action.FileAction" method="manageFile">
+            <result name="success">manageFiles.jsp</result>
+        </action>
+
+        <action name="deleteFile" class="com.qwy.blogs.action.FileAction" method="deleteFile">
+            <result name="success" type="redirectAction">manageFile?userId=${uploaderId}</result>
+        </action>
+
+        <action name="downloadAction" class="com.qwy.blogs.action.FileAction" method="download">
+            <result name="success" type="stream">
+                <param name="contentType">application/octet-stream;charset=ISO8859-1</param>
+                <param name="inputName">currInputStream</param>
+                <param name="contentDisposition">attachment;fileName=${fileName}</param>
+                <param name="bufferSize">1024</param>
+            </result>
+        </action>
+
+<!--        管理user-->
+        <action name="loginAction" class="com.qwy.blogs.action.UserAction" method="login">
+            <result name="success">/mainPage.jsp</result>
+            <result name="error">index.jsp</result>
+<!--            <result name="input">/index.jsp</result>-->
+        </action>
+
+        <action name="registerAction" class="com.qwy.blogs.action.UserAction" method="register">
+            <result name="success">/index.jsp</result>
+            <result name="error">/register.jsp</result>
+            <result name="input">/register.jsp</result>
+        </action>
+
+        <action name="showUsersAction" class="com.qwy.blogs.action.UserAction" method="showUsers">
+            <result name="input">/showUsers.jsp</result>
+        </action>
+
+        <action name="changePrositionAction" class="com.qwy.blogs.action.UserAction" method="changeProsition">
+            <result name="input" type="chain">showUsersAction</result>
+            <result name="error">/index.jsp</result>
+        </action>
+
+        <action name="changeInformationAction" class="com.qwy.blogs.action.UserAction" method="changeInformation">
+            <result name="input">changeUser.jsp</result>
+        </action>
+
+        <action name="changeInfoAction" class="com.qwy.blogs.action.UserAction" method="changeInfo">
+            <result name="input">mainPage.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+
+<!--        管理article-->
+
+        <action name="addArticleAction" class="com.qwy.blogs.action.ArticleAction" method="addArticle">
+            <result name="input">mainPage.jsp</result>
+            <result name="error">404.html</result>
+<!--            <result type="json">-->
+<!--                <param name="root">result</param>-->
+<!--            </result>-->
+        </action>
+
+        <action name="selectArticleAction" class="com.qwy.blogs.action.ArticleAction" method="selectArticle">
+            <result name="input">showblogs.jsp</result>
+            <result name="error">mainPage.jsp</result>
+        </action>
+
+        <action name="readArticleAction" class="com.qwy.blogs.action.ArticleAction" method="readArticle">
+            <result name="input">readblog.jsp</result>
+            <result name="error">mainPage.jsp</result>
+        </action>
+
+        <action name="selectArticlesByPageAction" class="com.qwy.blogs.action.ArticleAction" method="selectArticles">
+            <result name="input">showBlogsInfo.jsp</result>
+            <result name="error">mainPage.jsp</result>
+        </action>
+
+        <action name="deleteArticleAction" class="com.qwy.blogs.action.ArticleAction" method="deleteArticle">
+            <result name="input" type="redirectAction">selectArticlesByPageAction?userId=${userIdd}</result>
+            <result name="error">mainPage.jsp</result>
+        </action>
+
+        <action name="selectByWordAction" class="com.qwy.blogs.action.ArticleAction" method="searchArticleByWord">
+            <result name="input">showArticlesByCount.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+
+
+
+<!--        验证码-->
+        <action name="SecurityCodeImageAction" class="com.qwy.blogs.action.SecurityCodeImageAction">
+            <result name="success" type="stream">
+                <param name="contentType">image/jpeg</param>
+                <param name="inputName">imageStream</param>
+                <param name="bufferSize">2048</param>
+            </result>
+        </action>
+
+
+
+
+    </package>
+
+
+
+
+
+</struts>
